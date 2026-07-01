@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def get_metrics():
     return {
-        "hostname": socket.gethostname(),
+        "hostname": os.environ.get('HOST_HOSTNAME', socket.gethostname()),
         "os": platform.system(),
         "os_version": platform.version(),
         "platform": platform.platform(),

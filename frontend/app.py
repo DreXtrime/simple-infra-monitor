@@ -20,7 +20,7 @@ def get_combined_metrics():
         backend_data = {"error": str(e)}
 
     return {
-        "web_server": socket.gethostname(),
+        "web_server": os.environ.get('HOST_HOSTNAME', socket.gethostname()),
         "backend": backend_data,
     }
 

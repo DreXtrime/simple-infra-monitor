@@ -79,11 +79,12 @@ docker run -d --name frontend \
 
 ## Environment Variables
 
-| Variable      | Default                              | Description                               |
-|---------------|--------------------------------------|-------------------------------------------|
-| `PORT`        | `5000` (backend) / `8080` (frontend) | Port the service listens on               |
-| `HOST`        | `0.0.0.0`                            | Host the service binds to                 |
-| `BACKEND_URL` | `http://localhost:5000`              | Frontend only. URL of the backend service |
+| Variable         | Default                              | Description                                |
+|------------------|--------------------------------------|--------------------------------------------|
+| `PORT`           | `5000` (backend) / `8080` (frontend) | Port the service listens on                |
+| `HOST`           | `0.0.0.0`                            | Host the service binds to                  |
+| `BACKEND_URL`    | `http://localhost:5000`              | Frontend only. URL of the backend service  |
+| `HOST_HOSTNAME`  | `hostname`                           | Pass a custom hostname that gets displayed |
 
 
 ---
