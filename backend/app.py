@@ -1,5 +1,6 @@
 import socket
 import platform
+import os
 
 import psutil
 from flask import Flask
@@ -32,4 +33,6 @@ def health():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    host = os.environ.get("HOST", "0.0.0.0")
+    app.run(host=host, port=port)
