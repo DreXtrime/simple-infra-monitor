@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/svg+xml"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='6' y='6' width='52' height='52' rx='12' fill='%2323272F'/><path d='M16 44 L26 36 L34 40 L46 22' fill='none' stroke='%23F97316' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='46' cy='22' r='3.5' fill='%23F97316'/></svg>">
+</head>
+<body>
+<header>
+    <h1>Simple system monitor</h1>
+    <div id="controls">
+        <div id="served-by">Served by: <span id="web-server-hostname">loading...</span></div>
+        <svg id="countdown-ring" viewBox="0 0 36 36" width="28" height="28">
+            <circle id="countdown-track" cx="18" cy="18" r="15.9" fill="none" stroke-width="3"/>
+            <circle id="countdown-circle" cx="18" cy="18" r="15.9" fill="none" stroke-width="3"
+                    stroke-dasharray="100 100"
+                    stroke-dashoffset="0"
+                    stroke-linecap="round"
+                    transform="rotate(-90 18 18)"/>
+        </svg>
+        <button id="pause-btn">Pause</button>
+        <span id="refresh-status">Refreshing</span>
+    </div>
+</header>
+
+<main>
+    <section id="system-info" class="card">
+        <h2>System</h2>
+        <div class="metric-row">
+            <span class="metric-label">Hostname</span>
+            <span class="metric-value" id="hostname">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">OS</span>
+            <span class="metric-value" id="os">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Platform</span>
+            <span class="metric-value" id="platform">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">OS Version</span>
+            <span class="metric-value" id="os-version">loading...</span>
+        </div>
+    </section>
+
+    <section id="cpu-info" class="card">
+        <h2>CPU</h2>
+        <div class="metric-row">
+            <span class="metric-label">Usage</span>
+            <span class="metric-value" id="cpu-percent">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Cores</span>
+            <span class="metric-value" id="cpu-count">loading...</span>
+        </div>
+    </section>
+
+    <section id="memory-info" class="card">
+        <h2>Memory</h2>
+        <div class="metric-row">
+            <span class="metric-label">Usage</span>
+            <span class="metric-value" id="memory-percent">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Used</span>
+            <span class="metric-value" id="memory-used">loading...</span>
+        </div>
+        <div class="metric-row">
+            <span class="metric-label">Total</span>
+            <span class="metric-value" id="memory-total">loading...</span>
+        </div>
+    </section>
+</main>
+
+<script src="/static/main.js"></script>
+</body>
+</html>
