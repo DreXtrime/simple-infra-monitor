@@ -50,10 +50,34 @@ docker compose up --build
 Then open `http://localhost:8080` in your browser.
 
 ---
+## Using Pre-built Images
+
+Pre-built images are published to GitHub Container Registry and used for production deployment.
+
+**Backend:**
+```bash
+docker pull ghcr.io/drextrime/infra-backend:latest
+docker run -d --name infra-backend \
+  --restart unless-stopped \
+  -p 5000:5000 \
+  ghcr.io/drextrime/infra-backend:latest
+```
+
+**Frontend:**
+```bash
+docker pull ghcr.io/drextrime/infra-frontend:latest
+docker run -d --name infra-frontend \
+  --restart unless-stopped \
+  -e BACKEND_URL=http://:5000 \
+  -p 8080:8080 \
+  ghcr.io/drextrime/infra-frontend:latest
+```
+
+---
 
 ## Running Separately
 
-If you want to run the backend and frontend on different machines, build and run each container individually.
+If you want to run the backend and frontend on different machines, you can also build and run each container individually.
 
 **Backend** (on the app server):
 
