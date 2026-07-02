@@ -64,7 +64,7 @@ function startCountdown() {
 function startRefresh() {
     fetchMetrics();
     intervalId = setInterval(fetchMetrics, REFRESH_INTERVAL);
-    refreshStatus.textContent = "Refreshing...";
+    refreshStatus.textContent = "Refreshing";
     refreshStatus.classList.remove("paused");
     refreshStatus.classList.remove("error");
     countdownRing.classList.remove("paused");
