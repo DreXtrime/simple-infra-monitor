@@ -2,7 +2,7 @@
 
 A lightweight dockerized Python backend that serves host machine system metrics to a JavaScript frontend.
 
-Designed to be deployed with a separate backend and frontend container, making it suitable for multi-server infrastructure setups where the frontend proxies metrics from a remote backend.
+Designed to be deployed with a separate backend and frontend container, making it suitable for multiserver infrastructure setups where the frontend proxies metrics from a remote backend.
 
 ![Screenshot](assets/screenshot.webp)
 ---
