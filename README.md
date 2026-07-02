@@ -178,16 +178,20 @@ The frontend expects the backend to be running at `BACKEND_URL` (defaults to `ht
 simple-infra-monitor/
 ├── backend/
 │   ├── app.py
+│   ├── app_test.py
 │   ├── requirements.txt
+│   ├── requirements-dev.txt
 │   └── Dockerfile
 ├── frontend/
 │   ├── app.py
+│   ├── app_test.py
 │   ├── templates/
 │   │   └── index.html
 │   ├── static/
 │   │   ├── style.css
 │   │   └── main.js
 │   ├── requirements.txt
+│   ├── requirements-dev.txt
 │   └── Dockerfile
 ├── docker-compose.yml
 ├── .env.example
