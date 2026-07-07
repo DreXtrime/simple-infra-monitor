@@ -28,12 +28,12 @@ jobs:
       - name: Code quality check
         run: |
           cd backend
-          flake8 . --max-line-length=120
+          flake8 .
 
       - name: Security scan
         run: |
           cd backend
-          bandit -r . -ll
+          bandit -r .
 
   test-frontend:
     runs-on: ubuntu-latest
@@ -58,12 +58,12 @@ jobs:
       - name: Code quality check
         run: |
           cd frontend
-          flake8 . --max-line-length=120
+          flake8 .
 
       - name: Security scan
         run: |
           cd frontend
-          bandit -r . -ll
+          bandit -r .
 
   build:
     runs-on: ubuntu-latest

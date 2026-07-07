@@ -1,6 +1,7 @@
 from unittest.mock import patch
 from app import get_combined_metrics
 
+
 def test_combined_metrics_structure():
     fake_backend = {"hostname": "appserver", "cpu_percent": 10.0}
     with patch("app.requests.get") as mock_get:
