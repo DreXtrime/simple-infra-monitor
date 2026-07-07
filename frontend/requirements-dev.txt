@@ -1,4 +1,5 @@
 -r requirements.txt
 pytest
 flake8
-bandit
+Flake8-pyproject
+bandit[toml]
