@@ -25,6 +25,16 @@ jobs:
           cd backend
           pytest
 
+      - name: Code quality check
+        run: |
+          cd backend
+          flake8 . --max-line-length=120
+
+      - name: Security scan
+        run: |
+          cd backend
+          bandit -r . -ll
+
   test-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -44,6 +54,16 @@ jobs:
         run: |
           cd frontend
           pytest
+
+      - name: Code quality check
+        run: |
+          cd frontend
+          flake8 . --max-line-length=120
+
+      - name: Security scan
+        run: |
+          cd frontend
+          bandit -r . -ll
 
   build:
     runs-on: ubuntu-latest
