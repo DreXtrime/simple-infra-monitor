@@ -11,7 +11,7 @@ BACKEND_URL = os.environ.get('BACKEND_URL', 'http://localhost:5000')
 
 def get_combined_metrics():
     try:
-        backend_data = requests.get(f"{BACKEND_URL}/metrics", timeout=5).json()
+        backend_data = requests.get(f"{BACKEND_URL}/api/metrics", timeout=5).json()
     except requests.exceptions.ConnectionError:
         backend_data = {"error": "backend unreachable"}
     except requests.exceptions.Timeout:
