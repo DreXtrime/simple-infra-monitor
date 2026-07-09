@@ -15,11 +15,13 @@ Browser
 Frontend container  (Flask, port 8080)
    |  - serves the UI
    |  - adds its own hostname to the response
-   |  - proxies /metrics from the backend
+   |  - proxies /api/metrics from the backend
    |
 Backend container   (Flask, port 5000)
       - collects host metrics (CPU, memory, OS info)
-      - exposes /metrics as JSON
+      - exposes /api/metrics as JSON
+      - exposes /metrics in Prometheus format
+      
 ```
 
 The frontend and backend are intentionally separate so they can run on different machines. The frontend reports which host served the request, while the backend reports its own system metrics.
@@ -103,19 +105,18 @@ docker run -d --name frontend \
 
 ## Environment Variables
 
-| Variable         | Default                              | Description                                |
-|------------------|--------------------------------------|--------------------------------------------|
-| `PORT`           | `5000` (backend) / `8080` (frontend) | Port the service listens on                |
-| `HOST`           | `0.0.0.0`                            | Host the service binds to                  |
-| `BACKEND_URL`    | `http://localhost:5000`              | Frontend only. URL of the backend service  |
-| `HOST_HOSTNAME`  | `hostname`                           | Pass a custom hostname that gets displayed |
-
+| Variable        | Default                              | Description                               |
+|-----------------|--------------------------------------|-------------------------------------------|
+| `PORT`          | `5000` (backend) / `8080` (frontend) | Port the service listens on               |
+| `HOST`          | `0.0.0.0`                            | Host the service binds to                 |
+| `BACKEND_URL`   | `http://localhost:5000`              | Frontend only. URL of the backend service |
+| `HOST_HOSTNAME` | `hostname`                           | Pass a custom hostname that gets displayed |
 
 ---
 
 ## API Endpoints
 
-### `GET /metrics`
+### `GET /api/metrics`
 
 Returns infrastructure metrics as JSON.
 
@@ -142,9 +143,13 @@ Returns infrastructure metrics as JSON.
 }
 ```
 
+### `GET /metrics`
+
+Backend only. Returns metrics in Prometheus text format for scraping. Exposes CPU usage, memory usage, and HTTP request counts per endpoint.
+
 ### `GET /health`
 
-Returns `{"status": "ok"}`.  
+Returns `{"status": "ok"}`.
 
 ---
 
@@ -172,31 +177,5 @@ The frontend expects the backend to be running at `BACKEND_URL` (defaults to `ht
 
 ---
 
-## Project Structure
-
-```
-simple-infra-monitor/
-├── backend/
-│   ├── app.py
-│   ├── app_test.py
-│   ├── requirements.txt
-│   ├── requirements-dev.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── app.py
-│   ├── app_test.py
-│   ├── templates/
-│   │   └── index.html
-│   ├── static/
-│   │   ├── style.css
-│   │   └── main.js
-│   ├── requirements.txt
-│   ├── requirements-dev.txt
-│   └── Dockerfile
-├── docker-compose.yml
-├── .env.example
-└── README.md
-```
----
 ## Credits
 [tanelerikneitov](https://github.com/DreXtrime)
