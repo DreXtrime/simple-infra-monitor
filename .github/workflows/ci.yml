@@ -104,11 +104,15 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ghcr.io/${{ env.OWNER_LC }}/infra-backend:latest
+          tags: |
+            ghcr.io/${{ env.OWNER_LC }}/infra-backend:latest
+            ghcr.io/${{ env.OWNER_LC }}/infra-backend:${{  github.sha }}
 
       - name: Build and push frontend
         uses: docker/build-push-action@v7
         with:
           context: ./frontend
           push: true
-          tags: ghcr.io/${{ env.OWNER_LC }}/infra-frontend:latest
+          tags: | 
+            ghcr.io/${{ env.OWNER_LC }}/infra-frontend:latest
+            ghcr.io/${{ env.OWNER_LC }}/infra-frontend:${{  github.sha }}
