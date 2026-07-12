@@ -118,7 +118,6 @@ jobs:
           format: 'table'
           exit-code: '1'
           severity: 'CRITICAL'
-          trivyignores: '.github/trivyignore'
       - name: Run Trivy vulnerability scanner on frontend
         uses: aquasecurity/trivy-action@master
         with:
